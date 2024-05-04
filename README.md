@@ -50,6 +50,6 @@ This is **experimental software** and is provided on an "as is" and "as availabl
 We **do not give any warranties** and **will not be liable** for any loss incurred through any use of this codebase.
 
 <!--- Shields -->
-[tests-shield]: https://github.com/pmerkleplant/verklegarden/stealth-addresses/actions/workflows/unit-tests.yml/badge.svg
-[tests-shield-url]: https://github.com/verklegarden/stealth-addresses/actions/workflows/unit-tests.yml
+[tests-shield]: https://github.com/verklegarden/verklegarden/stealth-addresses/actions/workflows/ci.yml/badge.svg
+[tests-shield-url]: https://github.com/verklegarden/stealth-addresses/actions/workflows/ci.yml
 [license-shield]: https://img.shields.io/badge/license-Apache2.0/MIT-blue.svg

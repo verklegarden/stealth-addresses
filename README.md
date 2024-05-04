@@ -1,66 +1,55 @@
-## Foundry
+<div align="center">
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+<h1>Stealth Addresses</h1>
 
-Foundry consists of:
+<a href="">[![Unit Tests][tests-shield]][tests-shield-url]</a>
+<a href="">![Apache2/MIT licensed][license-shield]</a>
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+</div>
 
-## Documentation
+A Solidity implementation of ERC-5564 stealth addresses for offchain usage.
 
-https://book.getfoundry.sh/
+## Installation
 
-## Usage
+Install with [Foundry](https://getfoundry.sh/):
 
-### Build
-
-```shell
-$ forge build
+```bash
+$ forge install verklegarden/stealth-addresses
 ```
 
-### Test
+## Contributing
 
-```shell
+The project uses the Foundry toolchain. You can find installation instructions [here](https://getfoundry.sh/).
+
+Setup:
+
+```bash
+$ git clone https://github.com/verklegarden/stealth-addresses
+$ cd stealth-addresses/
+$ forge install
+```
+
+Run tests:
+
+```bash
 $ forge test
+$ forge test -vvvv # Run with full stack traces
+$ FOUNDRY_PROFILE=intense forge test # Run in intense mode
 ```
 
-### Format
+Lint:
 
-```shell
-$ forge fmt
+```bash
+$ forge fmt [--check]
 ```
 
-### Gas Snapshots
+## Safety
 
-```shell
-$ forge snapshot
-```
+This is **experimental software** and is provided on an "as is" and "as available" basis.
 
-### Anvil
+We **do not give any warranties** and **will not be liable** for any loss incurred through any use of this codebase.
 
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+<!--- Shields -->
+[tests-shield]: https://github.com/pmerkleplant/verklegarden/stealth-addresses/actions/workflows/unit-tests.yml/badge.svg
+[tests-shield-url]: https://github.com/verklegarden/stealth-addresses/actions/workflows/unit-tests.yml
+[license-shield]: https://img.shields.io/badge/license-Apache2.0/MIT-blue.svg

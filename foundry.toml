@@ -2,5 +2,25 @@
 src = "src"
 out = "out"
 libs = ["lib"]
+remappings = [
+    "ds-test/=lib/crysol/lib/forge-std/lib/ds-test/src/",
+    "forge-std/=lib/forge-std/src/",
+    "crysol/=lib/crysol/src/onchain/",
+    "crysol-offchain/=lib/crysol/src/offchain/",
+    "crysol-unsafe/=lib/crysol/src/unsafe/",
+]
+ffi = true
+
+# Compilation
+evm_version = "shanghai"
+solc_version = "0.8.24"
+via_ir = false
+optimizer = false
+extra_output_files = ["irOptimized"]
+
+[fmt]
+line_length = 80
+int_types = "short"
+number_underscore = "preserve"
 
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options

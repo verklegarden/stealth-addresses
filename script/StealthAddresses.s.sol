@@ -5,7 +5,8 @@ import {Script} from "forge-std/Script.sol";
 import {console2 as console} from "forge-std/console2.sol";
 import {StdStyle} from "forge-std/StdStyle.sol";
 
-import {Secp256k1Offchain} from "crysol-offchain/secp256k1/Secp256k1Offchain.sol";
+import {Secp256k1Offchain} from
+    "crysol-offchain/secp256k1/Secp256k1Offchain.sol";
 import {Secp256k1, SecretKey, PublicKey} from "crysol/secp256k1/Secp256k1.sol";
 import {
     Secp256k1Arithmetic,

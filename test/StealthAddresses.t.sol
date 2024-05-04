@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0
-pragma solidity ^0.8.16;
+pragma solidity ^0.8.4;
 
 import {Test} from "forge-std/Test.sol";
 import {console2 as console} from "forge-std/console2.sol";
@@ -134,7 +134,7 @@ contract StealthAddressesTest is Test {
         assertFalse(found);
     }
 
-    function test_computeStealthSecretKey() public {
+    function test_computeStealthSecretKey() public view {
         // Taken from: https://github.com/nerolation/executable-stealth-address-specs/blob/main/test.ipynb
 
         SecretKey spendSk = Secp256k1.secretKeyFromUint(
@@ -166,7 +166,7 @@ contract StealthAddressesTest is Test {
         assertEq(gotSk.asUint(), wantSk.asUint());
     }
 
-    function test_StealthMetaAddress_toString() public {
+    function test_StealthMetaAddress_toString() public view {
         // Taken from: https://github.com/nerolation/executable-stealth-address-specs/blob/main/test.ipynb
 
         PublicKey memory spendPk = PublicKey({

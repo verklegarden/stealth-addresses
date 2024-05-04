@@ -7,7 +7,25 @@
 
 </div>
 
-A Solidity implementation of ERC-5564 stealth addresses for offchain usage.
+A Solidity implementation of ERC-5564 stealth addresses for offchain usage based on [`crysol`](https://github.com/verklegarden/crysol).
+
+## Introduction
+
+`StealthAddresses` is a library for common stealth address operations. Note that most of the functionality is `vmed`, meaning it is only executable offchain.
+
+See [`script/Example.s.sol`](./script/Example.sol) for usage example.
+
+
+```bash
+$ forge script script/Example.s.sol
+> [ALICE] Created new address funded with 1 ETH
+> [BOB]   Created two key pairs for their stealth meta address
+> [BOB]   Created and published stealth meta address: st:eth:0x030403...18c1e
+> [ALICE] Generated stealth address from Bob stealth meta address
+> [ALICE] Send 1 ETH to stealth address and published the stealth address
+> [BOB]   Found out the stealth address belongs to them
+> [BOB]   Computed the stealth address' secret key
+```
 
 ## Installation
 

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0
-pragma solidity ^0.8.16;
+pragma solidity ^0.8.4;
 
 import {Script} from "forge-std/Script.sol";
 import {console2 as console} from "forge-std/console2.sol";
@@ -21,15 +21,15 @@ import {
 } from "src/StealthAddresses.sol";
 
 /**
- * @title ERC5564Example
+ * @title Example
  *
  * @dev Run via:
  *
  *      ```bash
- *      $ forge script examples/secp256k1/stealth-addresses/ERC5564.sol:ERC5564Example -vvvv
+ *      $ forge script script/Example.sol
  *      ```
  */
-contract ERC5564Example is Script {
+contract Example is Script {
     using Secp256k1Offchain for SecretKey;
     using Secp256k1Offchain for PublicKey;
     using Secp256k1 for SecretKey;

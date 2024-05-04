@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0
-pragma solidity ^0.8.16;
+pragma solidity ^0.8.4;
 
 import {Vm} from "forge-std/Vm.sol";
 
@@ -60,6 +60,9 @@ struct StealthAddress {
     uint8 viewTag;
 }
 
+// TODO: Should be provided via crysol?
+error SecretKeyInvalid();
+
 /**
  * @title StealthAddresses
  *
@@ -102,8 +105,6 @@ library StealthAddresses {
 
     /// @dev Returns a randomly generated stealth address derived from stealth
     ///      meta address `stealthMeta`.
-    ///
-    /// @custom:vm Secp256k1::newSecretKey()
     function generateStealthAddress(StealthMetaAddress memory stealthMeta)
         internal
         vmed
@@ -123,16 +124,12 @@ library StealthAddresses {
     ///
     /// @dev Reverts if:
     ///        Ephemeral secret key invalid
-    ///
-    /// @custom:vm Secp256k1::SecretKey.toPublicKey()
-    /// @custom:invariant A public key's keccak256 image is never zero:
-    ///     ∀ pk ∊ PublicKey: keccak256(pk) != 0
     function generateStealthAddress(
         StealthMetaAddress memory stealthMeta,
         SecretKey ephSk
     ) internal vmed returns (StealthAddress memory) {
         if (!ephSk.isValid()) {
-            revert("SecretKeyInvalid()");
+            revert SecretKeyInvalid();
         }
 
         PublicKey memory ephPk = ephSk.toPublicKey();
@@ -171,10 +168,6 @@ library StealthAddresses {
     ///
     /// @dev Note that `stealth`'s view tag MUST be correct in order for the check
     ///      to succeed.
-    ///
-    /// @custom:vm Secp256k1::PublicKey.toPublicKey()
-    /// @custom:invariant A public key's keccak256 image is never zero:
-    ///     ∀ pk ∊ PublicKey: keccak256(pk) != 0
     function checkStealthAddress(
         SecretKey viewSk,
         PublicKey memory spendPk,
@@ -211,9 +204,6 @@ library StealthAddresses {
     ///
     /// @dev Note that the stealth address MUST belong to the spend and view
     ///      secret keys!
-    ///
-    /// @custom:invariant A public key's keccak256 image is never zero:
-    ///     ∀ pk ∊ PublicKey: keccak256(pk) != 0
     function computeStealthSecretKey(
         SecretKey spendSk,
         SecretKey viewSk,
@@ -242,8 +232,6 @@ library StealthAddresses {
     ///
     /// @dev A stealth meta address' string representation is defined as:
     ///         `st:<chain>:0x<compressed spendPk><compressed  viewPk>`
-    ///
-    /// @custom:vm vm.toString(bytes)(string)
     function toString(StealthMetaAddress memory sma, string memory chain)
         internal
         view
@@ -278,9 +266,6 @@ library StealthAddresses {
 
     /// @dev Returns a shared secret derived from secret key `sk` and public key
     ///      `pk`.
-    ///
-    /// @custom:invariant A public key's keccak256 image is never zero:
-    ///     ∀ pk ∊ PublicKey: keccak256(pk) != 0
     function _deriveSharedSecret(SecretKey sk, PublicKey memory pk)
         private
         view
